@@ -5,8 +5,8 @@ Permite importar alumnos de un archivo CSV de SAUCE, personalizar grupos y prueb
 
 Versión en vivo en https://eoicuaderno.netlify.app/
 
-Descargable en https://github.com/ajimenezmunoz/eoicuaderno/raw/refs/heads/main/eoicuaderno.zip
-
 Usuario y contraseña por defecto: eoi (ambos, en minúsculas)
 
-Comentarios y necesidades a antoniojjm@educastur.org
+Descargable en https://github.com/ajimenezmunoz/eoicuaderno/raw/refs/heads/main/eoicuaderno.zip
+
+Comentarios y errores a antoniojjm@educastur.org
