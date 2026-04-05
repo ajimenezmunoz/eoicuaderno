@@ -4,6 +4,7 @@ No guarda en línea estos datos sensibles, sino que se almacenan en tu dispositi
 Permite importar alumnos de un archivo CSV de SAUCE, personalizar grupos y pruebas, nombres y orden de Actividades de lengua, etc.
 
 Versión en vivo en https://eoicuaderno.netlify.app/
+
 Descargable en https://github.com/ajimenezmunoz/eoicuaderno/raw/refs/heads/main/eoicuaderno.zip
 
 Usuario y contraseña por defecto: eoi (ambos, en minúsculas)
