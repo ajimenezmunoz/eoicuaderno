@@ -3,3 +3,8 @@ Este es un cuaderno para guardar las notas de tus alumnos en un dispositivo y na
 No guarda en línea estos datos sensibles, sino que se almacenan en tu dispositivo.
 Permite importar alumnos de un archivo CSV de SAUCE, personalizar grupos y pruebas, nombres de Actividades de lengua, etc.
 
+Versión en vivo en https://eoicuaderno.netlify.app/
+
+Usuario y contraseña por defecto: eoi (ambos, en minúsculas)
+
+Comentarios y necesidades a antoniojjm@educastur.org
