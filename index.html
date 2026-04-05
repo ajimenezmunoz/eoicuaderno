@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <title>Notas EOI</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="loginScreen" style="display:none;">
+  <div class="login-card">
+    <div class="login-logo">📓</div>
+    <h2 class="login-title">Cuaderno de Notas EOI</h2>
+
+    <div class="md-field">
+      <label>Usuario</label>
+      <input type="text" id="loginUser" autocomplete="username" inputmode="text">
+    </div>
+
+    <div class="md-field" style="position:relative;">
+      <label>Contraseña</label>
+      <input type="password" id="loginPass" autocomplete="current-password">
+      <button id="togglePass" class="toggle-pass-btn">👁</button>
+    </div>
+
+    <label class="check-label">
+      <input type="checkbox" id="recordarme">
+      <span>Recordarme</span>
+    </label>
+
+    <button id="btnLogin" class="md-button md-primary login-btn">Entrar</button>
+
+    <p id="loginError" class="login-msg error" style="display:none;">Usuario o contraseña incorrectos</p>
+    <p id="loginBlocked" class="login-msg error" style="display:none;">Demasiados intentos. Inténtalo más tarde.</p>
+  </div>
+</div>
+
+<div id="app">
+  <header class="md-appbar">
+  <h1>📓 Cuaderno de Notas EOI</h1>
+</header>
+
+<main class="md-container">
+
+  <!-- TABS -->
+  <nav class="md-tabs">
+    <button class="md-tab active" data-tab="grupos" title="Grupos">
+      <span class="tab-icon">👥</span>
+      <span class="tab-label">Grupos</span>
+    </button>
+    <button class="md-tab" data-tab="alumnos" title="Estudiantes">
+      <span class="tab-icon">🎓</span>
+      <span class="tab-label">Alumnos</span>
+    </button>
+    <button class="md-tab" data-tab="asignaturas" title="Actividades">
+      <span class="tab-icon">📚</span>
+      <span class="tab-label">Actividades</span>
+    </button>
+    <button class="md-tab" data-tab="pruebas" title="Pruebas">
+      <span class="tab-icon">📝</span>
+      <span class="tab-label">Pruebas</span>
+    </button>
+    <button class="md-tab" data-tab="notas" title="Notas">
+      <span class="tab-icon">🔢</span>
+      <span class="tab-label">Notas</span>
+    </button>
+    <button class="md-tab" data-tab="medias" title="Medias">
+      <span class="tab-icon">📊</span>
+      <span class="tab-label">Medias</span>
+    </button>
+    <button class="md-tab" data-tab="importar" title="Datos">
+      <span class="tab-icon">💾</span>
+      <span class="tab-label">Datos</span>
+    </button>
+  </nav>
+
+  <!-- ============================
+       GRUPOS
+       ============================ -->
+  <section id="tab-grupos" class="tab-content active">
+
+    <div class="md-card">
+      <h2>Grupos</h2>
+
+      <form id="formGrupo" class="md-form inline">
+        <div class="md-field">
+          <label>Nombre del grupo</label>
+          <input type="text" id="nombreGrupo">
+        </div>
+        <button class="md-button md-primary">Añadir grupo</button>
+      </form>
+
+      <table class="md-table">
+        <thead>
+          <tr>
+            <th>Grupo</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="tablaGrupos"></tbody>
+      </table>
+    </div>
+
+  </section>
+
+  <!-- ============================
+       ALUMNOS
+       ============================ -->
+  <section id="tab-alumnos" class="tab-content">
+
+    <div class="md-card">
+      <h2>Estudiantes</h2>
+
+      <form id="formAlumno" class="md-form inline">
+        <div class="md-field">
+          <label>Nombre</label>
+          <input type="text" id="nombreAlumno">
+        </div>
+        <div class="md-field">
+          <label>Grupo</label>
+          <select id="grupoAlumno"></select>
+        </div>
+        <div class="md-field">
+          <label>Activo 1ª evaluación</label>
+          <select id="activo1Alumno">
+            <option value="true">Sí</option>
+            <option value="false">No</option>
+          </select>
+        </div>
+        <div class="md-field">
+          <label>Activo 2ª evaluación</label>
+          <select id="activo2Alumno">
+            <option value="true">Sí</option>
+            <option value="false">No</option>
+          </select>
+        </div>
+        <button class="md-button md-primary">Añadir alumno</button>
+      </form>
+
+      <table class="md-table">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Grupo</th>
+            <th>Activo 1ª Ev.</th>
+            <th>Activo 2ª Ev.</th>
+            <th>Comentarios</th>
+			<th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="tablaAlumnos"></tbody>
+      </table>
+    </div>
+
+  </section>
+
+  <!-- ============================
+       ASIGNATURAS
+       ============================ -->
+  <section id="tab-asignaturas" class="tab-content">
+
+    <div class="md-card">
+      <h2>Actividades de lengua</h2>
+
+      <table class="md-table">
+        <thead>
+          <tr>
+            <th>Ordenar (ver SAUCE)</th>
+            <th>Nombre</th>
+          </tr>
+        </thead>
+        <tbody id="tablaAsignaturas"></tbody>
+      </table>
+    </div>
+
+  </section>
+
+  <!-- ============================
+       PRUEBAS POR GRUPO
+       ============================ -->
+  <section id="tab-pruebas" class="tab-content">
+
+    <div class="md-card">
+      <h2>Pruebas por grupo</h2>
+
+      <div class="md-form inline">
+        <div class="md-field">
+          <label>Grupo</label>
+          <select id="grupoPruebas"></select>
+        </div>
+        <div class="md-field">
+          <label>Actividad de lengua</label>
+          <select id="asignaturaPruebas"></select>
+        </div>
+        <div class="md-field">
+          <label>Evaluación</label>
+          <select id="semestrePruebas">
+            <option value="1">1ª</option>
+            <option value="2">2ª</option>
+          </select>
+        </div>
+        <button id="btnCargarPruebas" class="md-button">Cargar</button>
+      </div>
+
+      <div id="contenedorPruebas" class="md-card-inner">
+        <!-- Aquí se pintan las pruebas del grupo+asignatura+semestre -->
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ============================
+       NOTAS
+       ============================ -->
+  <section id="tab-notas" class="tab-content">
+
+    <div class="md-card">
+      <h2>Notas</h2>
+
+      <div class="md-form inline">
+        <div class="md-field">
+          <label>Grupo</label>
+          <select id="grupoNotas"></select>
+        </div>
+        <div class="md-field">
+          <label>Evaluación</label>
+          <select id="semestreNotas">
+            <option value="0"></option>
+            <option value="1">1ª</option>
+            <option value="2">2ª</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Vista móvil: tarjetas por alumno -->
+      <div id="notasCards" class="notas-cards-container"></div>
+
+      <!-- Vista escritorio: tabla original -->
+      <div class="tabla-scroll desktop-only">
+        <table class="md-table">
+          <thead id="theadNotas"></thead>
+          <tbody id="tbodyNotas"></tbody>
+        </table>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ============================
+       MEDIAS
+       ============================ -->
+  <section id="tab-medias" class="tab-content">
+
+    <div class="md-card">
+      <h2>Medias pruebas (exc. 0 y Acta)</h2>
+
+      <div class="md-form inline">
+        <div class="md-field">
+          <label>Grupo</label>
+          <select id="grupoMedias"></select>
+        </div>
+        <div class="md-field">
+          <label>Evaluación</label>
+          <select id="semestreMedias">
+            <option value="1">1ª</option>
+            <option value="2">2ª</option>
+          </select>
+        </div>
+        <button id="btnCalcularMedias" class="md-button">Calcular</button>
+      </div>
+
+      <table class="md-table">
+        <thead>
+          <tr>
+            <th>Actividad de lengua</th>
+            <th>Media</th>
+          </tr>
+        </thead>
+        <tbody id="tbodyMedias"></tbody>
+      </table>
+    </div>
+
+  </section>
+  
+<section id="tab-importar" class="tab-content">
+  <div class="md-card">
+    <h2>Datos y Gestión</h2>
+<button id="btnCambiarCred" class="md-button">Cambiar usuario y contraseña</button>
+
+<div id="panelCred" style="display:none; margin-top:15px;">
+  <label>Nuevo usuario:</label>
+  <input type="text" id="nuevoUser"><br><br>
+
+  <label>Nueva contraseña:</label>
+  <input type="password" id="nuevoPass"><br><br>
+
+  <button id="btnGuardarCred" class="md-button">Guardar</button>
+</div>
+<br>&nbsp;<br><button id="btnLogout" class="md-button">Cerrar sesión</button>
+<br>&nbsp;<br>
+    <button id="btnExportar" class="md-button md-primary">Exportar datos a archivo JSON</button>
+
+    <div style="margin-top:20px;">
+      <label class="md-button">
+        Importar datos de archivo JSON
+        <input type="file" id="inputImportar" accept="application/json" style="display:none;">
+      </label>
+    </div>
+<p style="margin-top:20px; color:#555;">
+      Estas funciones permiten trasladar todos los datos entre equipos y/o navegadores y gestionar la base de datos.<br>
+    </p>
+    <div style="margin-top:20px;">
+      <label class="md-button">
+        Importar desde CSV de SAUCE
+        <input type="file" id="inputCSV" accept=".csv,text/csv" style="display:none;">
+      </label>
+    </div>
+	<p style="margin-top:20px; color:#555;">
+      Para obtener el archivo CSV, en SAUCE ir a Alumnado -> Alumnado del profesor/a<br>y pulsar el botón "txt cvs" para seleccionar el formato CSV y aceptar.<br>Esto generará un archivo RegAlumPro.csv que hallarás en Descargas o similar.
+    </p>
+    <div style="margin-top:20px;">
+      <button id="btnBorrarBD" class="md-button" style="background:#c62828;color:white;">
+        Borrar base de datos
+      </button>
+    </div>
+   
+  </div>
+</section>
+
+</main>
+
+<script src="app.js"></script>
+</div>
+
+
+</body>
+</html>
